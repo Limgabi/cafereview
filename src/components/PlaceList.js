@@ -17,7 +17,7 @@ function PlaceList({ placeInfo }) {
               name: place.content,
               address: place.address,
               phone: place.phone
-            }}><p>{place.content}</p></Link>
+            }} style={{textDecoration: "none", color: "black"}}><h3>{place.content}</h3></Link>
             <p>{place.address}</p>
             <p>{place.road_address_name}</p>
             <p>{place.phone}</p>

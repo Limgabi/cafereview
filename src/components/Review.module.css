@@ -1,0 +1,59 @@
+.form {
+  border: 2px solid lightgray;
+  padding: 32px 18px;
+  margin: 16px auto 40px;
+  width: 65%;
+}
+
+.title {
+  border: none;
+  width: 80%;
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.content {
+  border: 1px solid black;
+  width: 80%;
+  padding: 8px auto;
+  margin-bottom: 16px;
+}
+
+.space, .coffee {
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn input[type=radio] {
+  display: none;
+  margin: 3px;
+}
+
+.btn label {
+  display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	user-select: none;
+}
+
+.btn input[type=radio]:checked + label {
+	background: #ffe0a6;
+}
+ 
+.btn label:hover {
+	color: #666;
+}
+
+.btnResult {
+  border: 1px solid black;
+  display: flex;
+  margin-bottom: 16px;
+}

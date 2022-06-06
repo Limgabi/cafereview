@@ -36,10 +36,10 @@ function Search() {
             road_address_name: data[i].road_address_name,
             phone: data[i].phone,
           })
+          console.log(data[i]);
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
         }
         setMarkers(markers)
-
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정
         map.setBounds(bounds)
       }
@@ -48,8 +48,7 @@ function Search() {
 
   return (
     <>
-      <NavBar />
-      <Map // 로드뷰를 표시할 Container
+      <Map 
         center={{
           lat: 37.566826,
           lng: 126.9786567,

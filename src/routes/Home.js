@@ -5,7 +5,6 @@ import KakaoMap from '../components/KakaoMap';
 function Home() {
   return (
     <div>
-      <NavBar/>
       <KakaoMap/>
     </div>
   );
