@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+import style from "./KakaoMap.module.css";
 
 function KakaoMap() {
+  const [level, setLevel] = useState(3);
   const [state, setState] = useState({
     center: {
       lat: 33.450701,
@@ -50,16 +52,24 @@ function KakaoMap() {
           width: "100%",
           height: "450px",
         }}
-        level={3} 
+        level={level}
       >
         {!state.isLoading && (
           <MapMarker position={state.center}>
             <div style={{ padding: "5px", color: "#000" }}>
-              {state.errMsg ? state.errMsg : "여기에 계신가요?!"}
+              {state.errMsg ? state.errMsg : "현재 위치 ∠( ᐛ 」∠)_"}
             </div>
           </MapMarker>
         )}
       </Map>
+      <div style={{ textAlign: "center", marginTop: "16px" }}>
+        <button className={style.btn} onClick={() => setLevel(level - 1)}>
+          지도 레벨 - 1
+        </button>
+        <button className={style.btn} onClick={() => setLevel(level + 1)}>
+          지도 레벨 + 1
+        </button>
+      </div>
     </>
   )
 }
