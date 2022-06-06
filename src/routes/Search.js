@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk';
 import { useLocation } from 'react-router-dom';
-import NavBar from '../components/NavBar';
 import PlaceList from '../components/PlaceList';
+import { AiFillCloseCircle } from "react-icons/ai"
+import style from "../components/KakaoMap.module.css";
+
 const { kakao } = window;
 
 function Search() {
@@ -12,6 +14,7 @@ function Search() {
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!map) return
@@ -48,7 +51,7 @@ function Search() {
 
   return (
     <>
-      <Map 
+      <Map
         center={{
           lat: 37.566826,
           lng: 126.9786567,
@@ -61,25 +64,38 @@ function Search() {
         onCreate={setMap}
       >
         {markers.map((marker) => (
-          <MapMarker
-            key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
-            position={marker.position}
-            onClick={() => setInfo(marker)}
-            image={{
-              src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-              size: {
-                width: 24,
-                height: 35
-              }, 
-            }}
-          >
-            {info && info.content === marker.content && (
-              <div style={{ color: "#000" }}>{marker.content}</div>
+          <>
+            <MapMarker
+              key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+              position={marker.position}
+              onClick={() => {
+                setInfo(marker);
+                setIsOpen(true);
+              }}
+              image={{
+                src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
+                size: {
+                  width: 24,
+                  height: 35
+                },
+              }}
+            />
+            {info && isOpen && (
+              <CustomOverlayMap position={info.position}>
+                <div className={style.info}>
+                  {info.content}
+                  <span
+                    className={style.close}
+                    onClick={() => setIsOpen(false)}
+                    title="닫기"
+                  ><AiFillCloseCircle/></span>
+                </div>
+              </CustomOverlayMap>
             )}
-          </MapMarker>
+          </>
         ))}
       </Map>
-      <PlaceList placeInfo={markers}/>
+      <PlaceList placeInfo={markers} />
     </>
   )
 }

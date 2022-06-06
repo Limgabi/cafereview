@@ -19,3 +19,22 @@
   transform: scale(1.02);
   cursor: pointer;
 }
+
+.info {
+  position: relative;
+  background-color: lightgray;
+  color: #000;
+  text-align: center;
+  height: 24px;
+  line-height: 22px;
+  border-radius: 4px;
+  padding: 2px 10px;
+}
+
+.close {
+  position: absolute;
+  right: -6;
+  top: -6;
+  color: #000;
+  z-index: 6;
+}
