@@ -4,7 +4,7 @@ import style from './NavBar.module.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdAccountCircle } from 'react-icons/md';
 
-function NavBar() {
+function NavBar({ isLoggedIn }) {
   const navigate = useNavigate();
   const [searchWord, setSearchWord] = useState("");
   const onChange = (e) => {
@@ -29,9 +29,19 @@ function NavBar() {
           onChange={onChange}
           placeholder='search the place!'
         />
-        <button className={style.btn}><AiOutlineSearch size={21}/></button>
+        <button className={style.btn}><AiOutlineSearch size={21} /></button>
       </form>
-      <div><Link to="/auth" style={{ color: "black" }}><span><MdAccountCircle size={24}/></span></Link></div>
+      <div>
+        {isLoggedIn ? (
+          <Link to="/profile" style={{ color: "black" }}>
+            <span><MdAccountCircle size={24} /></span>
+          </Link>
+        ) : (
+          <Link to="/auth" style={{ color: "black" }}>
+            <span><MdAccountCircle size={24} /></span>
+          </Link>
+        )}
+      </div>
     </nav>
   );
 }
