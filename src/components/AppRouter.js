@@ -7,16 +7,16 @@ import Search from '../routes/Search';
 import Detail from '../routes/Detail';
 import Profile from '../routes/Profile';
 
-function AppRouter({ isLoggedIn }) {
+function AppRouter({ refreshUser, isLoggedIn, userObj }) {
   return (
     <BrowserRouter>
       <NavBar isLoggedIn={isLoggedIn}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile/" element={<Profile />}/>
+        <Route path="/profile/" element={<Profile userObj={userObj}/>}/>
         <Route path="/auth/" element={<Auth/>}/>
         <Route path="/search/" element={<Search />} />
-        <Route path="/place/:id" element={<Detail />} />
+        <Route path="/place/:id" element={<Detail isLoggedIn={isLoggedIn} userObj={userObj}/>} />
       </Routes>
     </BrowserRouter>
   );

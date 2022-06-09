@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { authService } from "../fbase";
 import {
     createUserWithEmailAndPassword,
@@ -12,9 +13,10 @@ import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 
 function Auth() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [newAccount, setNewAccount] = useState(true);
+    const [newAccount, setNewAccount] = useState(false);
     const [error, setError] = useState("");
 
     const onChange = (e) => {
@@ -27,6 +29,7 @@ function Auth() {
             setPassword(value);
         }
     }
+
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -36,11 +39,13 @@ function Auth() {
             } else {
                 data = await signInWithEmailAndPassword(authService, email, password);
             }
+            navigate('/');
             console.log(data);
         } catch (error) {
             setError(error.message);
         }
     }
+
     const toggleAccount = () => {
         setNewAccount(prev => !prev);
     }
@@ -55,7 +60,7 @@ function Auth() {
             provider = new GithubAuthProvider();
         }
         const data = await signInWithPopup(authService, provider);
-        console.log(data);
+        navigate('/');
     }
 
     return (

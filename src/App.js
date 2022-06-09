@@ -1,25 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import AppRouter from './components/AppRouter';
 import { authService } from './fbase';
+import { onAuthStateChanged, updateProfile } from 'firebase/auth';
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
+    onAuthStateChanged(authService, (user) => {
       if (user) {
-        setIsLoggedIn(true);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          uemail: user.email,
+          updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
+        });
+        if (user.displayName === null) {
+          const name = user.email.split("@")[0];
+          user.displayName = name;
+        }
       } else {
-        setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
+    })
+  }, [])
+
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
     });
-  }, []);
+  }
+
   return (
     <>
-    {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}
-  </>
+      {init ?
+        <AppRouter 
+          refreshUser={refreshUser}
+          isLoggedIn={Boolean(userObj)}
+          userObj={userObj}
+        />
+        : "Initializing..."}
+    </>
   );
 }
 
