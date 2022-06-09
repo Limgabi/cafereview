@@ -10,15 +10,15 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
+        if (user.displayName === null) {
+          const name = user.email.split("@")[0];
+          user.displayName = name;
+        }
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
           updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
         });
-        if (user.displayName === null) {
-          const name = user.email.split("@")[0];
-          user.displayName = name;
-        }
       } else {
         setUserObj(null);
       }
