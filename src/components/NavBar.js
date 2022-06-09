@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './NavBar.module.css';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { FaTwitterSquare } from 'react-icons/fa';
-import { TiSocialInstagram } from 'react-icons/ti';
+import { MdAccountCircle } from 'react-icons/md';
 
 function NavBar() {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ function NavBar() {
         />
         <button className={style.btn}><AiOutlineSearch size={21}/></button>
       </form>
-      <div><span><FaTwitterSquare size={24}/></span><span><TiSocialInstagram size={24}/></span></div>
+      <div><Link to="/auth" style={{ color: "black" }}><span><MdAccountCircle size={24}/></span></Link></div>
     </nav>
   );
 }
