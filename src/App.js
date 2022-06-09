@@ -13,7 +13,6 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
-          uemail: user.email,
           updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
         });
         if (user.displayName === null) {

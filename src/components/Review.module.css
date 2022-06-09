@@ -1,32 +1,27 @@
 .form {
-  border: 2px solid lightgray;
-  padding: 32px 18px;
-  margin: 16px auto 40px;
+  padding: 16px 18px;
+  margin: 16px auto;
   width: 65%;
 }
 
-.title {
-  border: none;
-  width: 80%;
-  border-bottom: 1px solid black;
-  padding-bottom: 8px;
+.radioForm {
+  padding: 20px;
+  background-color: rgba(243, 242, 243, 0.926)
+}
+
+.space, .coffee, .service {
   margin-bottom: 16px;
 }
 
-.content {
-  border: 1px solid black;
-  width: 80%;
-  padding: 8px auto;
-  margin-bottom: 16px;
-}
-
-.space, .coffee {
-  margin-bottom: 16px;
+.space span, .coffee span, .service span {
+  margin-right: 16px;
+  font-weight: 600;
 }
 
 .btn {
   display: inline-block;
   margin-right: 10px;
+  background-color: #fff;
 }
 
 .btn input[type=radio] {
@@ -42,18 +37,83 @@
 	border: 1px solid #999;
 	border-radius: 6px;
 	user-select: none;
+  border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  transition: 0.25s;
 }
 
 .btn input[type=radio]:checked + label {
-	background: #ffe0a6;
+  color: #000;
+  font-weight: bold;
 }
  
 .btn label:hover {
-	color: #666;
+	font-weight: bold;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35), 0 6px 6px rgba(0, 0, 0, 0.22);
 }
 
-.btnResult {
-  border: 1px solid black;
-  display: flex;
+.star {
+  display: inline-block;
+  direction: rtl;
+  border:0;
+}
+
+.star input[type=radio]{
+  display: none;
+}
+
+.star label {
+  font-size: 3em;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+}
+
+.star label:hover{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.star label:hover ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.star input[type=radio]:checked ~ label{
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+.content {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 1.5px #D3D3D3;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: none;
+  margin: 10px auto;
+}
+
+.content:focus {
+  outline: none;
+}
+
+.submitBtn, .reviewBtn {
+  border: none;
+  padding: 10px 25px;
+  margin-bottom: 40px;
+  border: 1px solid #999;
+  background-color: #fff;
+	border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  transition: 0.25s;
+}
+
+.submitBtn:hover, .reviewBtn:hover {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35), 0 6px 6px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+}
+
+.reviewBtn {
+  font-weight: bold;
   margin-bottom: 16px;
 }
