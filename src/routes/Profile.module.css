@@ -1,0 +1,66 @@
+.container {
+  padding: 16px 18px;
+  margin: 16px auto;
+  width: 65%;
+  text-align: center;
+}
+
+.adminWrap {
+  max-width: 375px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.adminInfo {
+  align-items: center;
+}
+
+.name {
+  font-weight: 800;
+}
+
+.btn {
+  margin-top: 7px;
+}
+
+.btn button {
+  height: 38px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  width: 240px;
+}
+
+.review {
+  border: 1px solid;
+  border-color: #ecf0f2;
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: 0 2px 6px 0 rgb(0 0 0 / 5%);
+  margin-bottom: 15px;
+  padding: 22px 20px;
+  text-align: left;
+}
+
+.review .placeInfo {
+  display: inline-flex;
+}
+
+.review .placeName {
+  display: block;
+  overflow: hidden;
+  font-weight: bold;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.review .placeAdd {
+  margin: 3px 0 0 5px;
+  font-size: 14px;
+  color: #9a9a9a;
+  letter-spacing: -0.4px;
+}

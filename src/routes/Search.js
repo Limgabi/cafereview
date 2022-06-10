@@ -26,7 +26,7 @@ function Search() {
         // LatLngBounds 객체에 좌표 추가
         const bounds = new kakao.maps.LatLngBounds()
         let markers = []
-
+        
         for (var i = 0; i < data.length; i++) {
           markers.push({
             position: {
