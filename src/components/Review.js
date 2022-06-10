@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import style from "./Review.module.css"
 import { dbService } from "../fbase";
 import { collection, addDoc } from "firebase/firestore";
-import { FiCoffee } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 
 function Review({ name, userObj }) {
   const navigate = useNavigate();
@@ -11,11 +11,15 @@ function Review({ name, userObj }) {
   const [spaceValue, setSpaceValue] = useState('1');
   const [coffeeValue, setCoffeeValue] = useState('1');
   const [serviceValue, setServiceValue] = useState('1');
-  const [starValue, setStarValue] = useState('');
+
   const [spaceResult, setSpaceResult] = useState('넓어요');
   const [coffeeResult, setCoffeeResult] = useState('고소해요');
   const [serviceResult, setServiceResult] = useState('친절해요');
   const [reviewContent, setReviewContent] = useState('');
+
+  const starArr = [0, 1, 2, 3, 4];
+  const [starClicked, setStarClicked] = useState([false, false, false, false, false]);
+  const [starValue, setStarValue] = useState(0);
 
   const radioSpace = [
     { name: '넓어요', value: '1' },
@@ -36,14 +40,6 @@ function Review({ name, userObj }) {
     { name: '불친절해요', value: '3' },
   ]
 
-  const radioStar = [
-    { name: '1', value: '1' },
-    { name: '2', value: '2' },
-    { name: '3', value: '3' },
-    { name: '4', value: '4' },
-    { name: '5', value: '5' },
-  ]
-
   const ClickSpaceRadioBtn = (e) => {
     setSpaceValue(e.target.value);
     setSpaceResult(e.target.name);
@@ -59,6 +55,16 @@ function Review({ name, userObj }) {
     setServiceResult(e.target.name);
   }
 
+  const onClickStar = (idx) => {
+    let clickStates = [...starClicked];
+    for (let i=0; i<5; i++) {
+      clickStates[i] = i <= idx ? true : false;
+    }
+    setStarClicked(clickStates);
+    let score = starClicked.filter(Boolean).length;
+    setStarValue(score);
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const reviewObj = {
@@ -70,7 +76,7 @@ function Review({ name, userObj }) {
       space: spaceResult,
       coffee: coffeeResult,
       service: serviceResult,
-      star: serviceValue
+      rating: starValue,
     };
     console.log(reviewObj)
     await addDoc(collection(dbService, "reviews"), reviewObj);
@@ -140,24 +146,21 @@ function Review({ name, userObj }) {
               }
             </div>
           </div>
-          <h3>리뷰를 남겨주세요</h3>
+          <p style={{fontSize: "18px", fontWeight: "bold", marginBottom: "8px" }}>리뷰를 남겨주세요</p>
           <fieldset className={style.star}>
-            <span>별점을 선택해주세요</span>
-            {
-              radioStar.map((star, idx) => (
-                <>
-                  <input 
-                    type="radio" 
-                    name="reviewStar" 
-                    className={style.reviewStar} 
-                    value={starValue} 
-                    id={idx} 
-                    onChange={() => {setStarValue(star)}}
-                  />
-                  <label for={idx}>★</label>
-                </>
-              ))
-            }
+            <span>별점을 선택해주세요</span> <span>{starValue}</span>
+              <div>
+                {
+                  starArr.map((star, idx) => (
+                    <FaStar
+                      key={star}
+                      className={`${starClicked[star]} && ${style.clickedStar}`}
+                      onClick={()=>onClickStar(star)}
+                      size={50}
+                    />
+                  ))
+                }
+              </div>
           </fieldset>
           <textarea className={style.content} value={reviewContent} placeholder="내용을 입력하세요" onChange={(e) => { setReviewContent(e.target.value) }} />
           <input type="submit" className={style.submitBtn} value="리뷰 작성" />
