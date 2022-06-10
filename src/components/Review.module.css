@@ -9,11 +9,15 @@
   background-color: rgba(243, 242, 243, 0.926)
 }
 
-.space, .coffee, .service {
+.space,
+.coffee,
+.service {
   margin-bottom: 16px;
 }
 
-.space span, .coffee span, .service span {
+.space span,
+.coffee span,
+.service span {
   margin-right: 16px;
   font-weight: 600;
 }
@@ -31,42 +35,45 @@
 
 .btn label {
   display: inline-block;
-	cursor: pointer;
-	padding: 0px 15px;
-	line-height: 34px;
-	border: 1px solid #999;
-	border-radius: 6px;
-	user-select: none;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  user-select: none;
   border: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
   transition: 0.25s;
 }
 
-.btn input[type=radio]:checked + label {
+.btn input[type=radio]:checked+label {
   color: #000;
   font-weight: bold;
 }
- 
+
 .btn label:hover {
-	font-weight: bold;
+  font-weight: bold;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35), 0 6px 6px rgba(0, 0, 0, 0.22);
 }
 
 .star {
   display: inline-block;
-  border:0;
+  border: 0;
 }
 
 .star svg {
   color: #e4e4e4;
   cursor: pointer;
 }
+
 .star svg:hover {
   color: #fcc419;
 }
+
 .star svg:hover ~ svg {
   color: #e4e4e4;
 }
+
 .star .clickedStar {
   color: #fcc419;
 }
@@ -87,18 +94,20 @@
   outline: none;
 }
 
-.submitBtn, .reviewBtn {
+.submitBtn,
+.reviewBtn {
   border: none;
   padding: 10px 25px;
   margin-bottom: 40px;
   border: 1px solid #999;
   background-color: #fff;
-	border-radius: 6px;
+  border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
   transition: 0.25s;
 }
 
-.submitBtn:hover, .reviewBtn:hover {
+.submitBtn:hover,
+.reviewBtn:hover {
   background-color: #fff;
   color: #000;
   font-weight: bold;
@@ -109,4 +118,26 @@
 .reviewBtn {
   font-weight: bold;
   margin-bottom: 16px;
+}
+
+.container {
+  border: 1px solid gray;
+  margin: 16px auto 32px;
+}
+
+.review {
+  text-align: left;
+  padding: 5px 20px 20px;
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+}
+
+.selected {
+  vertical-align: top;
+  margin: 0 4px 7px 0;
+  padding: 5px 9px 5px 7px;
+  border-radius: 4px;
+  background: #f5f7f8;
+  box-sizing: border-box;
+  color: rgb(86, 85, 85);
 }

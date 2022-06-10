@@ -31,7 +31,7 @@ function Detail({ isLoggedIn, userObj }) {
           : null
         }
       </div>
-      {/* <ReviewList placeName={data.name}/> */}
+      <ReviewList placeName={data.name}/>
     </div>
   )
 }
