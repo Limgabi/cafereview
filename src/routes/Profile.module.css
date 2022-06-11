@@ -46,6 +46,7 @@
 
 .review .placeInfo {
   display: inline-flex;
+  line-height: 1;
 }
 
 .review .placeName {

@@ -5,7 +5,7 @@ import { dbService } from "../fbase";
 import { collection, addDoc } from "firebase/firestore";
 import { FaStar } from "react-icons/fa";
 
-function Review({ name, userObj }) {
+function Review({ name, address, userObj }) {
   const navigate = useNavigate();
 
   const [spaceValue, setSpaceValue] = useState('1');
@@ -69,6 +69,7 @@ function Review({ name, userObj }) {
     e.preventDefault();
     const reviewObj = {
       placeName: name,
+      address: address,
       content: reviewContent,
       createdAt: Date.now(),
       creatorId: userObj.uid,

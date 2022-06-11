@@ -25,7 +25,7 @@ function Detail({ isLoggedIn, userObj }) {
         {clickBtn 
           ? (
             isLoggedIn 
-            ? <Review name={data.name} userObj={userObj} /> 
+            ? <Review name={data.name} address={data.address} userObj={userObj} /> 
             : alert("로그인을 해주세요")
           )
           : null

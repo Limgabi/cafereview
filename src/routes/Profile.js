@@ -25,7 +25,6 @@ function Profile({ userObj }) {
         id: doc.id
       }
       setMyReviews((prev) => [myReviewObject, ...prev]);
-      console.log(myReviews)
     })
   };
 
@@ -52,7 +51,7 @@ function Profile({ userObj }) {
             <div className={style.review} key={idx}>
               <div className={style.placeInfo}>
                 <p className={style.placeName}>{review.placeName}</p>
-                <p className={style.placeAdd}>주소</p>
+                <p className={style.placeAdd}>{review.address}</p>
               </div>
               <p>{review.content}</p>
               <span className={re_style.selected}>{`커피가 ${review.coffee}`}</span>

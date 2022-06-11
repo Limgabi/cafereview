@@ -12,7 +12,6 @@ function ReviewList({ placeName }) {
     const dbReviews = collection(dbService, "reviews");
     const q = query(dbReviews, where("placeName", "==", placeName))
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot)
 
     querySnapshot.forEach((doc) => {
       const reviewObject = {
