@@ -53,6 +53,7 @@ function Profile({ userObj }) {
                 <p className={style.placeName}>{review.placeName}</p>
                 <p className={style.placeAdd}>{review.address}</p>
               </div>
+              <p style={{color: "red"}}>{"★".repeat(review.rating)}</p>
               <p>{review.content}</p>
               <span className={re_style.selected}>{`커피가 ${review.coffee}`}</span>
               <span className={re_style.selected}>{`매장 크기가 ${review.space}`}</span>
