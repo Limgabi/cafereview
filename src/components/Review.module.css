@@ -121,6 +121,7 @@
 }
 
 .container {
+  width: 80%;
   border: 1px solid gray;
   margin: 16px auto 32px;
 }
@@ -130,6 +131,12 @@
   padding: 5px 20px 20px;
   border-top: 0.5px solid gray;
   border-bottom: 0.5px solid gray;
+}
+
+.deleteBtn {
+  float: right;
+  border: none;
+  background-color: inherit;
 }
 
 .selected {

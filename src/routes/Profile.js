@@ -4,7 +4,8 @@ import { authService, dbService } from '../fbase';
 import style from "./Profile.module.css";
 import re_style from "../components/Review.module.css";
 import { BsPersonCircle } from "react-icons/bs"
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { FiDelete } from "react-icons/fi";
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 function Profile({ userObj }) {
   const navigate = useNavigate();
@@ -32,6 +33,15 @@ function Profile({ userObj }) {
     getMyReviews();
   }, []);
 
+  const onDelete = async (id) => {
+    const ok = window.confirm('해당 리뷰를 삭제하시겠습니까?');
+    const deleteRef = doc(dbService, "reviews", id)
+    if (ok) {
+      await deleteDoc(deleteRef);
+      console.log(deleteRef);
+    }
+  }
+
   return (
     <div className={style.container}>
       <div className={style.adminWrap}>
@@ -50,8 +60,9 @@ function Profile({ userObj }) {
           myReviews.map((review, idx) => (
             <div className={style.review} key={idx}>
               <div className={style.placeInfo}>
-                <p className={style.placeName}>{review.placeName}</p>
-                <p className={style.placeAdd}>{review.address}</p>
+                <span className={style.placeName}>{review.placeName}</span>
+                <span className={style.placeAdd}>{review.address}</span>
+                <button className={style.deleteBtn} onClick={() => onDelete(review.id)}><FiDelete/></button>
               </div>
               <p style={{color: "red"}}>{"★".repeat(review.rating)}</p>
               <p>{review.content}</p>

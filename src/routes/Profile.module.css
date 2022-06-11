@@ -45,23 +45,29 @@
 }
 
 .review .placeInfo {
-  display: inline-flex;
   line-height: 1;
 }
 
 .review .placeName {
-  display: block;
+  display: inline-block;
   overflow: hidden;
   font-weight: bold;
   color: #000;
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  vertical-align: bottom;
 }
 
 .review .placeAdd {
   margin: 3px 0 0 5px;
   font-size: 14px;
   color: #9a9a9a;
-  letter-spacing: -0.4px;
+  
+}
+
+.deleteBtn {
+  float: right;
+  border: none;
+  background-color: inherit;
 }
