@@ -49,11 +49,15 @@ function ReviewList({ placeName, userObj }) {
             <p>
               <span><BsPersonCircle /></span>
               <span>  {r.creatorName}</span>
-              {
+              {userObj
+              ? (
                 r.creatorId === userObj.uid
                   ? <button className={style.deleteBtn} onClick={() => onDelete(r.id)}><FiDelete/></button>
                   : null
+              )
+              : (null)
               }
+              
             </p>
             <p style={{ color: "red" }}>{"★".repeat(r.rating)}</p>
             <p>{r.content}</p>
